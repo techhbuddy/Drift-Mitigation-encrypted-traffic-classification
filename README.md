@@ -58,6 +58,32 @@ XGBoost is an advanced gradient boosting framework that optimizes model performa
 - Requires careful hyperparameter tuning
 - Needs continuous drift monitoring
 
+## 📉 Drift Detection Techniques
+
+To monitor and detect **concept drift** in encrypted traffic data, we utilized three popular streaming drift detection methods from the **River** library:
+
+### 🧪 1. ADWIN (Adaptive Windowing)
+
+- Dynamically adjusts window size based on statistical changes in the data stream.
+- Best suited for detecting **gradual drift**.
+- Maintains two sub-windows and compares their means to determine if a change has occurred.
+
+### 🔍 2. KSWIN (Kolmogorov–Smirnov WINdowing)
+
+- A **non-parametric** test that compares distributions between recent and past data within a sliding window.
+- Effective for identifying **distributional changes**.
+- Suitable for detecting both sudden and gradual drifts without strong assumptions about the data.
+
+### ⚠️ 3. Page-Hinkley
+
+- Detects **abrupt/sudden drift** by analyzing the cumulative differences between observed values and their mean.
+- Triggers alarms when the average change in performance exceeds a certain threshold.
+
+---
+
+These detectors were applied to **selected traffic features**, and the points where drift was detected were **recorded for further analysis and model retraining**.
+
+
 ## 🛡️ Drift Mitigation Framework
 
 ### Detection Mechanisms:
