@@ -81,7 +81,7 @@ XGBoost is an advanced gradient boosting framework that optimizes model performa
 - GPU recommended for training
 
 ### Setup:
-```sh
+
 # Clone repository
 git clone https://github.com/yourusername/drift-mitigation.git
 cd drift-mitigation
@@ -93,55 +93,63 @@ source .env/bin/activate  # Windows: .env\Scripts\activate
 # Install dependencies
 pip install -r requirements.txt
 
-##Core Dependencies:
+# 🔐 Encrypted Traffic Classification with Drift Mitigation
 
-*   pandas
+## 📦 Dependencies
+
+Ensure you have the following libraries installed:
+
+- Python 3.8+
+- `pandas`
+- `numpy`
+- `scikit-learn`
+- `xgboost`
+- `matplotlib`
+- `river` (for drift detection)
+
+Install all dependencies using:
+
+
+pip install -r requirements.txt
+
+## 🚀 Usage
+
+### 1. Train the Models
+
+Use the following commands to train the models:
+
+
+python train_random_forest.py  
+python train_xgboost.py
+
+### 2. Evaluate Performance
+
+After training, evaluate the models using the following metrics:
+
+- **Accuracy**
+- **Precision**
+- **Recall**
+- **F1-Score**
+- **Drift Detection Metrics**  
+  (e.g., error rate, distribution shifts)
+
+---
+
+### 3. Run Drift Adaptation
+
+To handle concept drift and retrain models accordingly, run:
+
+
+python drift_mitigation.py
+
+## ✅ Conclusion
+
+This project introduces a **self-learning system for encrypted traffic classification** that effectively mitigates **concept drift**. By combining **Random Forest** and **XGBoost** with **adaptive retraining** and **drift detection**, we ensure **long-term model reliability**.
+
+
+
+
     
-*   numpy
-    
-*   scikit-learn
-    
-*   xgboost
-    
-*   river (for drift detection)
-    
-*   matplotlib
-    
 
-🚀 Usage
---------
 
-### 1\. Training Models:
 
-shCopy
-
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   python train_random_forest.py  python train_xgboost.py   `
-
-### 2\. Monitoring Drift:
-
-shCopy
-
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   python monitor.py \      --model xgboost_model.pkl \      --stream live_traffic.csv \      --threshold 0.15   `
-
-### 3\. Visualization:
-
-shCopy
-
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   python visualize.py --logs drift_results.json   `
-
-**Sample Output:**
-
-Copy
-
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   [DRIFT ALERT] 2023-11-20 09:45:12  - Confidence drop: 92% → 68%  - Key drifting features: packet_size, protocol  - Action: Incremental retraining initiated   `
-
-📊 Results
-----------
-
-**Key Achievements:**
-
-*   Maintained >90% accuracy under drift conditions
-    
-*   38% reduction in false positives
-    
-*   72% faster retraining vs full rebuilds
