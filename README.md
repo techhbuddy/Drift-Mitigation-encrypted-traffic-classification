@@ -1,7 +1,7 @@
 # Drift Mitigating Self-Learning System for Encrypted Traffic Classification
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![ML](https://img.shields.io/badge/Machine%20Learning-XGBoost%2BRandom%20Forest-orange)
+![ML](https://img.shields.io/badge/Machine%20Learning-XGBoost%2BRandom%20Forest%2BKNN%2BMLP%2BSVM%2BHoeffding%20Tree-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen)
 
@@ -43,11 +43,12 @@ Random Forest is an ensemble learning method that constructs multiple decision t
 XGBoost is an advanced gradient boosting framework that optimizes model performance through sequential tree building and regularization. It is highly efficient and widely used in classification tasks.
 
 **Performance:**
-| Metric        | Value  |
-|--------------|--------|
-| Accuracy     | 95.68% |
-| Precision    | 0.94   |
-| Recall       | 0.96   |
+| Metric                | Value   |
+|-----------------------|---------|
+| Accuracy (Train)      | 86.12%  |
+| Accuracy (Test)       | 78.79%  |
+| Pre-drift Accuracy    | 86.58%  |
+| Post-drift Accuracy   | 83.11%  |
 
 **Advantages:**
 - State-of-the-art classification accuracy
@@ -57,6 +58,88 @@ XGBoost is an advanced gradient boosting framework that optimizes model performa
 **Limitations:**
 - Requires careful hyperparameter tuning
 - Needs continuous drift monitoring
+
+### 3. Multi-Layer Perceptron (MLP)
+**Description:**  
+MLP is a class of feedforward artificial neural network consisting of at least three layers. It uses backpropagation for training and is capable of learning complex patterns.
+
+**Performance:**
+| Metric                | Value   |
+|-----------------------|---------|
+| Accuracy (Train)      | 61.98%  |
+| Accuracy (Test)       | 62.42%  |
+| Pre-drift Accuracy    | 68.96%  |
+| Post-drift Accuracy   | 66.03%  |
+
+**Advantages:**
+- Learns non-linear decision boundaries
+- Good for pattern recognition
+
+**Limitations:**
+- Prone to overfitting
+- Requires careful tuning of architecture and hyperparameters
+
+### 4. K-Nearest Neighbors (KNN)
+**Description:**  
+KNN is a lazy learning algorithm that classifies data based on the majority label among the K-nearest samples in the feature space. A sliding window approach was used in the streaming context.
+
+**Performance:**
+| Metric                | Value   |
+|-----------------------|---------|
+| Accuracy (Train)      | 69.08%  |
+| Accuracy (Test)       | 61.71%  |
+| Pre-drift Accuracy    | 61.71%  |
+| Post-drift Accuracy   | 61.58%  |
+
+**Advantages:**
+- Simple and interpretable
+- Effective with smaller datasets
+
+**Limitations:**
+- Computationally expensive for large data
+- Sensitive to irrelevant features and noisy data
+
+### 5. Hoeffding Tree
+**Description:**  
+Hoeffding Tree is a very fast decision tree learner for streaming data. It uses the Hoeffding bound to determine the number of samples needed to make decisions.
+
+**Performance:**
+| Metric                | Value   |
+|-----------------------|---------|
+| Accuracy (Train)      | 57.62%  |
+| Accuracy (Test)       | 62.69%  |
+| Pre-drift Accuracy    | 61.04%  |
+| Post-drift Accuracy   | 60.90%  |
+
+**Advantages:**
+- Designed for streaming data
+- Fast and memory-efficient
+
+**Limitations:**
+- Less accurate compared to ensemble models
+- May require tuning for drift sensitivity
+
+### 6. Support Vector Machine (SVM)
+**Description:**  
+SVM is a supervised learning model that classifies data by finding the optimal hyperplane that separates data points of different classes. A linear kernel was used in this project.
+
+**Performance:**
+| Metric                | Value   |
+|-----------------------|---------|
+| Accuracy (Train)      | 56.92%  |
+| Accuracy (Test)       | 56.34%  |
+| Pre-drift Accuracy    | 49.94%  |
+| Post-drift Accuracy   | 49.82%  |
+
+**Advantages:**
+- Effective in high-dimensional spaces
+- Memory efficient
+
+**Limitations:**
+- Not ideal for large datasets
+- Sensitive to noise and outliers
+
+
 
 ## 📉 Drift Detection Techniques
 
